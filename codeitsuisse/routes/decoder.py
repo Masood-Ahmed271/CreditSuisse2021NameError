@@ -8,7 +8,7 @@ logger = logging.getLogger(_name_)
 @approute('/decoder', methods=['POST'])
 
 def evaluateDecoder():
-    info = request.get_data(as_text=True)
+    info = request.get_data()
     logging.info("data sent for evaluation {}".format(info))
     possible = info['possible_values']
     num = info['num_slots']

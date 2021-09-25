@@ -31,42 +31,69 @@ def asteroid(astroidLine):
     # checking if the given asteroid line is palindrome
 
     answer = []
-    isPalindrome = False
+        # giving origin------------------
+    lengthOfString = len(astroidLine)
+    max = 0
+    count = 0
+    index = 1  #origin
+    for j in range(1, lengthOfString - 1):
+        character = astroidLine[j]
+        if (astroidLine[j - 1] == character) and (astroidLine[j + 1] == character):
+            for i in range(1, lengthOfString - 1):
+                #checking both right and left of the middle]
+                if (j-i >= 0) and (j+i < lengthOfString) and (astroidLine[j - i] == astroidLine[j + i]):
+                    count+= 1
+                elif count == 0:
+                    break
+                elif (j-i >= 0) and astroidLine[j - i] == character:
+                    count+= 1
+                elif (j+i < lengthOfString) and (astroidLine[j + i] == character):
+                    count+=1
+                else:
+                    break
+                
+        if count > max:
+            max = count
+            index = j
+        count = 0
+     
+    origin = index
+     #----------------------   
+    
     score = 0
     total = 0
-    character = 'A'
-    if astroidLine == astroidLine[::-1]:
-        isPalindrome = True
-
-    middle = int(len(astroidLine)/2)
-    origin = middle
-    if isPalindrome == True:
-        score+= 1
-        character = astroidLine[middle]
+    isinitial = True
     
-    for i in range(middle-1, -1, -1):
+    character = astroidLine[index]
+     
+    for i in range(index-1, -1, -1):
         if astroidLine[i] == character:
             score+= 1
         else:
-            if score < 7:
-                total = total + score*2
-            elif score >= 7 and score < 10:
-                total = total + score*2*1.5
+            if isinitial == True:
+                score = score * 2 + 1 
+                isinitial = False
             else:
-                total = total + score*2*2
+                score = score *2
+            if score < 7:
+                total = total + score
+            elif score >= 7 and score < 10:
+                total = total + score*1.5
+            else:
+                total = total + score*2
             
             score = 1
             character = astroidLine[i]
         if i == 0:
+            score = score * 2 
+            # else:
+            #     score = score *2
             if score < 7:
-                total = total + score*2
+                total = total + score
             elif score >= 7 and score < 10:
-                total = total + score*2*1.5
+                total = total + score*1.5
             else:
-                total = total + score*2*2
-    
-    if len(astroidLine)%2 != 0:
-        total -= 1
+                total = total + score*2
 
     answer.append(int(total))
     answer.append(int(origin))

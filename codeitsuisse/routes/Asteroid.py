@@ -31,7 +31,7 @@ def asteroid(astroidLine):
     # checking if the given asteroid line is palindrome
 
     answer = []
-        # giving origin------------------
+    # giving origin------------------
     lengthOfString = len(astroidLine)
     max = 0
     count = 0
@@ -56,56 +56,49 @@ def asteroid(astroidLine):
             max = count
             index = j
         count = 0
-     
-    origin = index
+        
+        origin = index
      #----------------------   
     
-    score = 0
-    total = 0
-    isinitial = True
-    
     character = astroidLine[index]
-     
-    for i in range(index-1, -1, -1):
-        if astroidLine[i] == character:
-            score+= 1
-        else:
-            if isinitial == True:
-                score = score * 2 + 1 
-                isinitial = False
-            else:
-                score = score *2
-            if score < 7:
-                total = total + score
-            elif score >= 7 and score < 10:
-                total = total + score*1.5
-            else:
-                total = total + score*2
-            
-            score = 1
-            character = astroidLine[i]
-        if i == 0:
-            score = score * 2 
-            # else:
-            #     score = score *2
-            if score < 7:
-                total = total + score
-            elif score >= 7 and score < 10:
-                total = total + score*1.5
-            else:
-                total = total + score*2
+    total = 0
+    left = index - 1
+    right = index + 1
+    score = 1
+    eachsidecheck = True
+    
+    # CCCAAAB B BAAACCC
+    while left >= 0 and right < lengthOfString:
+        if eachsidecheck == True:
+            if astroidLine[left] == character and astroidLine[right] == character:
+                while left >= 0 and right < lengthOfString and astroidLine[left] == character and astroidLine[right] == character:
+                    score += 2
+                    left -= 1
+                    right+= 1
+                    
+                eachsidecheck = False
+                
+                while left >= 0 and astroidLine[left] == character:
+                    score += 1
+                    left -= 1
+                
+                while right < lengthOfString and astroidLine[right] == character:
+                    score += 1
+                    right += 1
+
+                if score < 7:
+                    total = total + score
+                elif score >= 7 and score < 10:
+                    total = total + score*1.5
+                else:
+                    total = total + score*2
+                
+                if left >= 0 and right < lengthOfString:
+                    character = astroidLine[right]
+                    score = 0
+                    eachsidecheck = True
 
     answer.append(int(total))
     answer.append(int(origin))
 
     return answer
-
-    
-
-
-
-
-
-
-
-

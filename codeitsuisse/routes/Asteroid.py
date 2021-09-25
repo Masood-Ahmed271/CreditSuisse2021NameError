@@ -38,9 +38,9 @@ def asteroid(astroidLine):
     if astroidLine == astroidLine[::-1]:
         isPalindrome = True
 
+    middle = int(len(astroidLine)/2)
+    origin = middle
     if isPalindrome == True:
-        middle = int(len(astroidLine)/2)
-        origin = middle
         score+= 1
         character = astroidLine[middle]
     

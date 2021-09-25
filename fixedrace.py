@@ -17,7 +17,10 @@ def evaluatefixedrace():
     racers = data.split(",")
     result = fixedrace(racers)
 
-    return result
+    #return result
+    
+    logging.info("My result :{}".format(result))
+    return jsonify(result)
 
 
 

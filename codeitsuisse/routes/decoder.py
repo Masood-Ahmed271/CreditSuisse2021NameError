@@ -5,7 +5,7 @@ from codeitsuisse import app
 
 logger = logging.getLogger(_name_)
 
-@approute('/decoder', methods=['POST'])
+@app.route('/decoder', methods=['POST'])
 
 def evaluateDecoder():
     info = request.get_data()

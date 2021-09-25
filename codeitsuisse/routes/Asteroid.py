@@ -68,8 +68,8 @@ def asteroid(astroidLine):
     if len(astroidLine)%2 != 0:
         total -= 1
 
-    answer.append(total)
-    answer.append(origin)
+    answer.append(int(total))
+    answer.append(int(origin))
 
     return answer
 

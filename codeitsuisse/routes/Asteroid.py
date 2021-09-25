@@ -57,7 +57,7 @@ def asteroid(astroidLine):
             index = j
         count = 0
         
-        origin = index
+#         origin = index
      #----------------------   
     
     character = astroidLine[index]
@@ -99,6 +99,6 @@ def asteroid(astroidLine):
                     eachsidecheck = True
 
     answer.append(int(total))
-    answer.append(int(origin))
+    answer.append(int(index))
 
     return answer

@@ -14,8 +14,8 @@ def evaluatefixedrace():
     logging.info("data sent for evaluation {}".format(data))
     # inputValue = data.get("input")
     result =""
-    racers = data.split(",")
-    result = fixedrace(racers)
+#     racers = data.split(",")
+#     result = fixedrace(racers)
 
     return result
 
@@ -24,7 +24,8 @@ def evaluatefixedrace():
 
 
 
-def fixedrace(racers):
-    random.shuffle(racers)
-    return (','.join(racers))
+# def fixedrace(racers):
+# #     random.shuffle(racers)
+# #     return (','.join(racers))
+#     return ""
     
